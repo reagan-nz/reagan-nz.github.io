@@ -1,0 +1,29 @@
+title: Nanyi Zhao
+description: >-
+  NYU CS & Math junior. Notes on quantitative finance, machine learning,
+  and things I build along the way.
+baseurl: ""
+url: "https://reagan-nz.github.io"
+
+theme: minima
+
+header_pages:
+  - projects.md
+  - blog.md
+
+author:
+  name: Nanyi Zhao
+  email: reagan_nz@qq.com
+
+github_username: reagan-nz
+
+markdown: kramdown
+permalink: /:title/
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
