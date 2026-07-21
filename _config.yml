@@ -11,9 +11,7 @@ header_pages:
   - projects.md
   - blog.md
 
-author:
-  name: Nanyi Zhao
-  email: nz2295@nyu.edu
+author: Nanyi Zhao
 
 github_username: reagan-nz
 
