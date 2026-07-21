@@ -15,6 +15,10 @@ author: Nanyi Zhao
 
 github_username: reagan-nz
 
+minima:
+  show_excerpts: true
+  date_format: "%b %-d, %Y"
+
 markdown: kramdown
 permalink: /:title/
 

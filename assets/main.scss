@@ -46,6 +46,11 @@ body {
 
 .page-content {
   max-width: 760px;
+  margin: 0 auto;
+}
+
+.page-content .wrapper {
+  max-width: 100%;
 }
 
 h1, h2, h3 {
@@ -141,4 +146,69 @@ a:hover {
 .project-card .project-link {
   font-weight: 600;
   font-size: 0.95rem;
+}
+
+/* Blog archive list, styled like a plain post-index page */
+.post-list-heading {
+  display: none;
+}
+
+.post-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.post-list > li {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.post-list > li:first-child {
+  padding-top: 0;
+}
+
+.post-meta {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.post-list h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.post-list .post-link {
+  color: var(--ink);
+}
+
+.post-list .post-link:hover {
+  color: var(--accent);
+}
+
+.post-list > li p {
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.read-more {
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Single post page */
+.post-header {
+  margin-bottom: 1.5rem;
+}
+
+.post-meta.post-meta-single {
+  display: block;
+  margin-bottom: 0.3rem;
 }
