@@ -1,0 +1,7 @@
+---
+layout: default
+---
+<article class="nz-page">
+  <h1>{{ page.title | escape }}</h1>
+  <div{% unless page.prose == false %} class="nz-prose"{% endunless %}>{{ content }}</div>
+</article>

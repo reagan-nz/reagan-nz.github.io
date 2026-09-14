@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="nz-article">
+  <a class="nz-back" href="{{ '/blog/' | relative_url }}">&larr; Blog</a>
+  <p class="nz-note-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time></p>
+  <h1>{{ page.title | escape }}</h1>
+  <div class="nz-prose">{{ content }}</div>
+</article>

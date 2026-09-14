@@ -1,0 +1,11 @@
+{% assign current_section = page.nav_section %}
+{% if page.url == '/' %}{% assign current_section = 'home' %}{% endif %}
+{% if page.url == '/blog/' %}{% assign current_section = 'blog' %}{% endif %}
+<header class="nz-header">
+  <a class="nz-signature" href="{{ '/' | relative_url }}" aria-label="Nanyi Zhao home" lang="zh">赵南懿</a>
+  <nav class="nz-nav" aria-label="Main navigation">
+    <a href="{{ '/' | relative_url }}"{% if current_section == 'home' %} aria-current="page"{% endif %}>Home</a>
+    <a href="{{ '/blog/' | relative_url }}"{% if current_section == 'blog' %} aria-current="page"{% endif %}>Blog</a>
+    <a href="{{ '/research/' | relative_url }}"{% if current_section == 'research' %} aria-current="page"{% endif %}>Research Log</a>
+  </nav>
+</header>

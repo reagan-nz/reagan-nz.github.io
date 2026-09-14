@@ -1,0 +1,20 @@
+---
+layout: default
+---
+<article class="nz-article">
+  <a class="nz-back" href="{{ '/research/' | relative_url }}">&larr; Research log</a>
+  <p class="nz-note-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%-d %B %Y' }}</time> &middot; Reading notes</p>
+  <h1>{{ page.title | escape }}</h1>
+  {% if page.summary %}<p class="nz-note-description">{{ page.summary | escape }}</p>{% endif %}
+  <div class="nz-prose">{{ content }}</div>
+  {% if page.references.size > 0 %}
+  <section class="nz-references" aria-label="Public references">
+    <h2>Public references</h2>
+    <ul>
+      {% for reference in page.references %}
+      <li><a href="{{ reference.url | escape }}">{{ reference.title | escape }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>

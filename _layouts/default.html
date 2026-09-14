@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'en' }}">
+  {%- include head.html -%}
+  <body>
+    <div id="nanyi-notebook">
+      <a class="nz-skip-link" href="#main-content">Skip to content</a>
+      <div class="nz-inner">
+        {%- include header.html -%}
+        <main class="nz-main" id="main-content">{{ content }}</main>
+        {%- include footer.html -%}
+      </div>
+      <span class="nz-accessible-state" data-portrait-announcement aria-live="polite" aria-atomic="true"></span>
+    </div>
+  </body>
+</html>

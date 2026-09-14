@@ -1,19 +1,21 @@
 title: Nanyi Zhao
 description: >-
-  NYU CS & Math junior. Notes on quantitative finance, machine learning,
-  and things I build along the way.
+  NYU CS & Math senior. Writing, selected projects, and working notes
+  on AI tokenomics and token complexity.
 baseurl: ""
 url: "https://reagan-nz.github.io"
 
 theme: minima
 
 header_pages:
-  - projects.md
+  - index.md
   - blog.md
+  - research.md
 
 author: Nanyi Zhao
 
 github_username: reagan-nz
+email: nz2295@nyu.edu
 
 minima:
   show_excerpts: true
@@ -22,10 +24,41 @@ minima:
 markdown: kramdown
 permalink: /:title/
 
+collections:
+  research:
+    output: true
+    permalink: /research/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      nav_section: blog
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: research-entry
+      nav_section: research
+      math: true
+
+feed:
+  collections:
+    - research
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 exclude:
   - README.md
+  - AGENTS.md
+  - LICENSE
   - Gemfile
   - Gemfile.lock
+  - vendor
+  - research-private
+  - _research/_template.md
+  - node_modules
