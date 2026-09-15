@@ -20,14 +20,49 @@ AI tokenomics can be viewed through three layers: production, consumption, and v
 
 The notation introduces input or request scale *n*, model calls per request *k*, and agent depth *a*. I want to be more precise about what each of these measures.
 
-## Questions I'm taking forward
+## Questions / ambiguities
 
-1. What exactly should *n* represent: request count, input size, corpus size, or something else?
-2. Why is “RAG done right” classified as $$T(\log n)$$?
-3. If retrieval returns a fixed number of chunks of fixed length, does the retrieved context stay constant as the corpus grows?
-4. Should Big-T measure only LLM tokens, or should retrieval and deterministic computation also enter the resource model?
+### Q1 — What should the scaling variable be?
 
-> Treating corpus size and request-visible input as the same *n* may be conflating two different scaling questions.
+Big-T uses \\(n\\) somewhat loosely to represent request count or input size. However, in a real AI system, several dimensions may scale independently: the number of requests, query length, corpus size, retrieved-context size, and task complexity.
+
+For example, in a RAG system, the corpus may grow from one million to one hundred million documents while the model still receives only five retrieved chunks. In that case, token consumption with respect to corpus size may remain approximately constant.
+
+**Question:** Should Big-T use one universal \\(n\\), or should token complexity be defined with respect to multiple independent scaling variables?
+
+**Status:** Open for me. I need to check the full Big-T paper and existing work before treating this as a research gap.
+
+### Q2 — What resources should Big-T actually measure?
+
+Big-T is presented as a framework for token consumption, but AI systems also use deterministic computation outside the LLM.
+
+For example, a RAG system may perform vector search over a growing corpus. Retrieval computation may become more expensive as the database grows, while the number of tokens actually shown to the model remains nearly constant.
+
+**Question:** Should Big-T measure only model-visible token consumption, or should the resource model also include retrieval, code execution, tool calls, and other deterministic computation?
+
+**Status:** Open for me. I need to distinguish token complexity from ordinary computational complexity.
+
+### Q3 — Is agent depth enough to describe agentic token complexity?
+
+The current Big-T notation introduces agent depth \\(a\\), but different multi-agent topologies with similar depth may have very different token costs.
+
+For example, a sequential chain
+
+$$
+A \rightarrow B \rightarrow C \rightarrow D
+$$
+
+is structurally different from a branching system in which one agent spawns many workers. If each agent creates \\(b\\) sub-agents over depth \\(a\\), the number of active agents may grow approximately like
+
+$$
+1 + b + b^2 + \cdots + b^a,
+$$
+
+rather than simply scaling linearly with \\(a\\).
+
+**Question:** Is agent depth \\(a\\) sufficient, or does a useful token-complexity framework also need branching factor, topology, retry structure, or some other description of agent coordination?
+
+**Status:** Candidate question. I need to check how the full Big-T framework models branching and multi-agent systems.
 
 ## Next step
 
